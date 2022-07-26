@@ -1,4 +1,4 @@
-package com.example.springbatch.job.itemReader.cursor;
+package com.example.springbatch.job.itemReader.db.cursor;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package com.example.springbatch.job.itemReader.page;
+package com.example.springbatch.job.itemReader.db.page;
 
 import lombok.Data;
 
@@ -12,7 +12,7 @@ public class Address {
     private Long id;
     private String location;
 
-    @OneToOne
-    @JoinColumn(name = "member_id")
-    private Member member;
+//    @OneToOne
+//    @JoinColumn(name = "member_id")
+//    private Member member;
 }

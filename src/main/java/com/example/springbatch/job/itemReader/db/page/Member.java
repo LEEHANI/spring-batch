@@ -1,4 +1,4 @@
-package com.example.springbatch.job.itemReader.page;
+package com.example.springbatch.job.itemReader.db.page;
 
 import lombok.Data;
 

@@ -1,6 +1,6 @@
-package com.example.springbatch.job.itemReader.page;
+package com.example.springbatch.job.itemReader.db.page;
 
-import com.example.springbatch.job.itemReader.cursor.Customer;
+import com.example.springbatch.job.itemReader.db.cursor.Customer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
