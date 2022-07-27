@@ -1040,3 +1040,65 @@ public Step chunkStep() {
 ## ItemReaderAdapter 
 - 이미 기존에 사용하고 있는 DAO나 서비스를 배치에서 사용하고 싶을 때 delegate 역할을 한다. 
 ![adapter](./images/itemReader/adapter.png)
+
+# ItemWriter
+- 
+
+## FlatFileItemWriter 
+### DelimitedLineAggregator
+- ```
+  @Bean
+  public ItemWriter<Customer> flatDelimitedItemWriter() {
+      return new FlatFileItemWriterBuilder<>()
+              .name("flatDelimitedItemWriter")
+              .resource(new FileSystemResource("src/main/resources/customer.txt"))
+              .delimited()
+              .delimiter("|")
+              .names(new String[]{"id", "name", "age"})
+              .append(true)
+              .build();
+  }
+  ```
+
+### FormatterLineAggregator 
+- ```
+  @Bean
+  public ItemWriter<? super Customer> flatFormatterLineItemWriter() {
+      return new FlatFileItemWriterBuilder<>()
+              .name("flatFormatterLineItemWriter")
+              .resource(new FileSystemResource("src/main/resources/customer.txt"))
+              .formatted()
+              .format("%-2d%-6s%-2d")
+              .names(new String[]{"id", "name", "age"})
+              .append(true)
+              .build();
+  }
+  ```
+
+## JdbcBatchItemWriter
+- JDBC의 Batch 기능을 사용하여 bulk insert/update/delete 방식으로 처리 
+- 단건 처리가 아닌 일괄 처리
+- ```
+  @Bean
+  public ItemWriter<T> itemWriter() {
+      return new JdbcBatchItemWriterBuilder<>()
+              .dataSource(dataSource)
+              .sql(sql)
+              .beanMapped() //Pojo 기반으로 Insert SQL 의 values를 매핑 
+              .columnMapped() //Key, Value 기반으로 Insert SQL의 values를 매핑 
+              .build();
+  } 
+  ```
+
+## JpaItemWriter
+- Entity를 하나씩 chunk 크기 만큼 insert 혹은 merge 후 flush 한다. 
+- entity 자체를 저장하면 되기 때문에 별도의 쿼리가 필요 없음. 
+- ```
+  @Bean
+  public ItemWriter<T> itemWriter() {
+      return new JpaItemWriterBuilder<>()
+              .usePersist(true)
+              .entityManagerFactory(entityManagerFactory)
+              .build();
+  }
+  ```

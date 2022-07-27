@@ -22,9 +22,9 @@ import java.util.Date;
 @RequiredArgsConstructor
 public class JobLauncherController {
 
-    private final Job job;
-    private final JobLauncher jobLauncher;
-    private final BasicBatchConfigurer basicBatchConfigurer;
+//    private final Job job;
+//    private final JobLauncher jobLauncher;
+//    private final BasicBatchConfigurer basicBatchConfigurer;
 
 //    @PostMapping("/batch")
 //    public String launch(@RequestBody Member member) throws JobInstanceAlreadyCompleteException, JobExecutionAlreadyRunningException, JobParametersInvalidException, JobRestartException {

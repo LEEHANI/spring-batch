@@ -25,7 +25,7 @@ public class FlatFileItemReaderBatch {
     private final StepBuilderFactory stepBuilderFactory;
 
     @Bean
-    public Job job() {
+    public Job flatItemReaderJob() {
         return jobBuilderFactory.get("flat-file")
                 .incrementer(new RunIdIncrementer())
                 .start(step1())

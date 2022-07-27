@@ -1,4 +1,4 @@
-package com.example.springbatch.job.itemReader.cursor;
+package com.example.springbatch.job.itemReader.db.cursor;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.Job;
@@ -56,7 +56,7 @@ public class JpaCursorItemReaderBatch {
         return new JpaCursorItemReaderBuilder<Customer>()
                 .name("jpaCursorItemReader")
                 .entityManagerFactory(entityManagerFactory)
-                .queryString("select c from Member c where firstname like :firstname")
+                .queryString("select c from Customer c where firstName like :firstname")
                 .parameterValues(parameters)
                 .build();
     }
